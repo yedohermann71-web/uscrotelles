@@ -1,0 +1,272 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>U.S. Crotelles</title>
+
+<!-- 🔥 ICONES -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: white;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0f3d0f;
+    padding: 10px 40px;
+    border-bottom: 3px solid #00ff88;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 55px;
+}
+
+.logo span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #00ff88;
+}
+
+.nav a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav a:hover {
+    color: #00ff88;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a') no-repeat center/cover;
+}
+
+.hero h1 {
+    font-size: 45px;
+    color: #00ff88;
+}
+
+/* SLIDER */
+.slider {
+    width: 90%;
+    max-width: 1000px;
+    height: 450px;
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: black;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.8s;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    font-size: 28px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.prev:hover, .next:hover {
+    background: #00ff88;
+    color: black;
+}
+
+/* SECTION */
+.section {
+    padding: 40px;
+    text-align: center;
+}
+
+.section h2 {
+    color: #00ff88;
+}
+
+/* CARD */
+.card {
+    background: #111;
+    margin: 15px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+    border-left: 5px solid #00ff88;
+}
+
+/* SOCIAL */
+.social-section {
+    background: #111;
+    padding: 40px;
+    text-align: center;
+    border-top: 2px solid #00ff88;
+}
+
+.social-section h2 {
+    color: #00ff88;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    font-size: 30px;
+    color: white;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #00ff88;
+    transform: scale(1.2);
+}
+
+/* FOOTER */
+footer {
+    background: #0f3d0f;
+    text-align: center;
+    padding: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <img src="{% static 'logo us crotelles.jpg' %}">
+        <span>US Crotelles</span>
+    </div>
+
+    <nav class="nav">
+        <a href="{% url 'home' %}">Accueil</a>
+        <a href="{% url 'infos' %}">Infos du Club</a>
+        <a href="{% url 'matchs' %}">Matchs</a>
+        <a href="{% url 'classement' %}">Classement</a>
+        <a href="{% url 'contact' %}">Contact</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h1>Bienvenue sur le site officiel</h1>
+    <p>Club de Division 4 - Ligue Centre-Val de Loire</p>
+</div>
+
+<!-- SLIDER -->
+<div class="slider">
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+
+    <img src="{% static '2.png' %}" class="slide active">
+    <img src="{% static '4.png' %}" class="slide">
+    <img src="{% static '5.png' %}" class="slide">
+
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+</div>
+
+
+<!-- MATCHS -->
+<div class="section">
+    <h2>Prochain matchs</h2>
+
+    {% for match in matchs %}
+        <div class="card">
+            <strong>US Crotelles vs {{ match.equipe_adverse }}</strong><br>
+            {{ match.date }}<br>
+
+            {% if match.score_us != None %}
+                Score : {{ match.score_us }} - {{ match.score_adverse }}
+            {% else %}
+                Match à venir
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+<!-- 🔥 RÉSEAUX SOCIAUX -->
+<div class="social-section">
+    <h2>Suivez-nous</h2>
+
+    <div class="social-icons">
+
+        <!-- FACEBOOK (METS TON LIEN ICI) -->
+        <a href="https://www.facebook.com/profile.php?id=61585259037854" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+
+        <!-- INSTAGRAM -->
+        <a href="#">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <!-- TWITTER -->
+        <a href="#">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+
+    </div>
+</div>
+
+<footer>
+    © U.S. Crotelles - Tous droits réservés
+</footer>
+
+<script>
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+
+function showSlide(i) {
+    slides.forEach(s => s.classList.remove("active"));
+    index = (i + slides.length) % slides.length;
+    slides[index].classList.add("active");
+}
+
+function changeSlide(step) {
+    showSlide(index + step);
+}
+
+setInterval(() => changeSlide(1), 4000);
+</script>
+
+</body>
+</html>

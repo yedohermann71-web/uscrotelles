@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Matchs - US Crotelles</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0a0a0a;
+    color: white;
+}
+
+.section {
+    padding: 40px;
+    text-align: center;
+}
+
+h2 {
+    color: #00ff88;
+}
+
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 90%;
+    margin: auto;
+}
+
+.match-card {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #00ff88;
+}
+
+.teams {
+    font-weight: bold;
+}
+
+.vs { color: #00ff88; }
+
+.score {
+    font-size: 22px;
+    color: #00ff88;
+}
+
+.soon {
+    color: orange;
+}
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    width: 90%;
+    margin: auto;
+}
+
+.match-card {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #00ff88;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    background: #1a1a1a;
+}
+
+.teams {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.vs {
+    color: #00ff88;
+    margin: 0 10px;
+}
+
+.match-info {
+    color: #aaa;
+    margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+<div class="section">
+    <h2>Calendrier des matchs</h2>
+
+    <!-- MARS 2026 -->
+    <h3 style="color:#00ff88; margin-top:30px;">Mars 2026</h3>
+
+    <div class="matches-grid">
+
+        <div class="match-card">
+            <div class="teams">MONNAIE US 4 <span class="vs">3 - 1</span> CROTELLES US</div>
+            <div class="match-info">Dim 01 Mar 2026 - 12h30</div>
+        </div>
+
+        <div class="match-card">
+            <div class="teams">CROTELLES US <span class="vs">3 - 0</span> AMBOISE AC 3</div>
+            <div class="match-info">Dim 08 Mar 2026 - 15h00</div>
+        </div>
+
+        <div class="match-card">
+            <div class="teams">CROTELLES US <span class="vs">7 - 1</span> ESVRES SUR INDRE AS 3</div>
+            <div class="match-info">Dim 22 Mar 2026 - 15h00</div>
+        </div>
+
+        <div class="match-card">
+            <div class="teams">GATINE CHOISILLES FC 3 <span class="vs">1 - 1</span> CROTELLES US</div>
+            <div class="match-info">Sam 28 Mar 2026 - 20h00</div>
+        </div>
+
+    </div>
+
+    <!-- AVRIL 2026 -->
+    <h3 style="color:#00ff88; margin-top:40px;">Avril 2026</h3>
+
+    <div class="matches-grid">
+
+        <div class="match-card">
+            <div class="teams">CROTELLES US <span class="vs">VS</span> ST AVERTIN SP. 2</div>
+            <div class="match-info">Dim 12 Avr 2026 - 15h00</div>
+        </div>
+
+        <div class="match-card">
+            <div class="teams">NOTRE DAME D’OE ES 2 <span class="vs">VS</span> CROTELLES US</div>
+            <div class="match-info">Dim 26 Avr 2026 - 15h00</div>
+        </div>
+
+    </div>
+
+    <!-- MAI 2026 -->
+    <h3 style="color:#00ff88; margin-top:40px;">Mai 2026</h3>
+
+    <div class="matches-grid">
+
+        <div class="match-card">
+            <div class="teams">CROTELLES US <span class="vs">VS</span> PARCAY MESLAY AFC</div>
+            <div class="match-info">Dim 10 Mai 2026 - 15h00</div>
+        </div>
+
+        <div class="match-card">
+            <div class="teams">CROTELLES US <span class="vs">VS</span> TOURS TURK F</div>
+            <div class="match-info">Dim 31 Mai 2026 - 15h00</div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

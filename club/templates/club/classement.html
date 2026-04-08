@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Classement - US Crotelles</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0a0a0a;
+    color: white;
+}
+
+.header {
+    background: #0f3d0f;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #00ff88;
+}
+
+h1 {
+    color: #00ff88;
+}
+
+.container {
+    width: 95%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th {
+    background: #00ff88;
+    color: black;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+tr:hover {
+    background: #1a1a1a;
+}
+
+/* 🔥 ALIGNEMENT ÉQUIPE À GAUCHE */
+.equipe {
+    text-align: left;
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+/* 🔥 SURBRILLANCE US CROTELLES */
+.us {
+    background: #00ff88;
+    color: black;
+    font-weight: bold;
+}
+
+/* PODIUM */
+tr:nth-child(1) {
+    background: #1f3d1f;
+    font-weight: bold;
+}
+
+tr:nth-child(2) {
+    background: #151515;
+}
+
+tr:nth-child(3) {
+    background: #121212;
+}
+
+.pts {
+    color: #00ff88;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <h1>Classement officiel</h1>
+    <p>Départemental 4 - US Crotelles</p>
+</div>
+
+<div class="container">
+<table>
+
+<thead>
+<tr>
+    <th>Pr.</th>
+    <th>Équipe</th>
+    <th>Pts</th>
+    <th>J</th>
+    <th>G</th>
+    <th>N</th>
+    <th>P</th>
+    <th>F</th>
+    <th>P/Bo</th>
+    <th>Bp</th>
+    <th>Bc</th>
+    <th>Diff</th>
+    <th>Série</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for e in classement %}
+<tr class="{% if e.equipe == 'US Crotelles' %}us{% endif %}">
+
+    <td>{{ forloop.counter }}</td>
+    <td class="equipe">{{ e.equipe }}</td>
+
+    <td class="pts">{{ e.pts }}</td>
+    <td>{{ e.mj }}</td>
+    <td>{{ e.g }}</td>
+    <td>{{ e.n }}</td>
+    <td>{{ e.p }}</td>
+
+    <td>0</td>
+    <td>0</td>
+
+    <td>{{ e.bp }}</td>
+    <td>{{ e.bc }}</td>
+    <td>{{ e.diff }}</td>
+
+    <td>
+        {% for lettre in e.serie %}
+            {% if lettre == "V" %}
+                <span style="color:#00ff88;font-weight:bold;">V</span>
+            {% elif lettre == "N" %}
+                <span style="color:white;">N</span>
+            {% elif lettre == "D" %}
+                <span style="color:red;">D</span>
+            {% endif %}
+        {% endfor %}
+    </td>
+
+</tr>
+{% empty %}
+<tr>
+    <td colspan="13">Aucune donnée disponible</td>
+</tr>
+{% endfor %}
+
+<!-- 🔥 TABLEAU OFFICIEL COMPLET -->
+<tr><td>1</td><td class="equipe">FONDETTES AS 2</td><td>32</td><td>14</td><td>10</td><td>2</td><td>2</td><td>0</td><td>0</td><td>79</td><td>18</td><td>61</td><td>-</td></tr>
+
+<tr><td>2</td><td class="equipe">TOURS TURK F</td><td>31</td><td>13</td><td>10</td><td>1</td><td>2</td><td>0</td><td>0</td><td>46</td><td>22</td><td>24</td><td>-</td></tr>
+
+<tr><td>3</td><td class="equipe">AMBOISE AC 3</td><td>30</td><td>14</td><td>9</td><td>3</td><td>2</td><td>0</td><td>0</td><td>47</td><td>18</td><td>29</td><td>-</td></tr>
+
+<tr><td>4</td><td class="equipe">NOTRE DAME D OE ES 2</td><td>29</td><td>14</td><td>9</td><td>2</td><td>3</td><td>0</td><td>0</td><td>38</td><td>21</td><td>17</td><td>-</td></tr>
+
+<tr class="us"><td>5</td><td class="equipe">US Crotelles</td><td>17</td><td>14</td><td>5</td><td>2</td><td>7</td><td>0</td><td>0</td><td>34</td><td>31</td><td>3</td><td>-</td></tr>
+
+<tr><td>6</td><td class="equipe">GATINE CHOISILLES FC 3</td><td>17</td><td>14</td><td>5</td><td>2</td><td>7</td><td>0</td><td>0</td><td>31</td><td>42</td><td>-11</td><td>-</td></tr>
+
+<tr><td>7</td><td class="equipe">MONNAIE US 4</td><td>16</td><td>14</td><td>5</td><td>1</td><td>8</td><td>0</td><td>0</td><td>40</td><td>44</td><td>-4</td><td>-</td></tr>
+
+<tr><td>8</td><td class="equipe">ST AVERTIN SP. 2</td><td>13</td><td>14</td><td>3</td><td>4</td><td>7</td><td>0</td><td>0</td><td>41</td><td>47</td><td>-6</td><td>-</td></tr>
+
+<tr><td>9</td><td class="equipe">PARCAY MESLAY AFC</td><td>6</td><td>13</td><td>2</td><td>1</td><td>10</td><td>1</td><td>0</td><td>21</td><td>62</td><td>-41</td><td>-</td></tr>
+
+<tr><td>10</td><td class="equipe">ESVRES SUR INDRE AS 3</td><td>5</td><td>13</td><td>1</td><td>2</td><td>10</td><td>0</td><td>0</td><td>14</td><td>86</td><td>-72</td><td>-</td></tr>
+
+</tbody>
+
+</table>
+</div>
+
+</body>
+</html>
